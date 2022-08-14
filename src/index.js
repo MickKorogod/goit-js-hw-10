@@ -1,7 +1,7 @@
 import './css/styles.css';
 import { Notify } from 'notiflix';
 import debounce from 'lodash.debounce';
-import { fetchCountries } from './fetchCountries'
+import API from './fetchCountries'
 import { 
     renderMarkupCountryList,
     renderMarkupCountryInfo,
@@ -13,7 +13,7 @@ const countryInfo = document.querySelector ('.country-info')
 const DEBOUNCE_DELAY = 300;
 const limit = 10;
 
-refs.searchForm.addEventListner('input', debounce(onCountrySearch, DEBOUNCE_DELAY));
+input.addEventListner('input', debounce( onCountrySearch, DEBOUNCE_DELAY));
 function onCountrySearch(e) {
     e.preventDefault()
     const countryName = input.value
@@ -23,11 +23,12 @@ function onCountrySearch(e) {
         return;
     }
 
-    fetchCountries(name)
+    API.fetchCountries(name)
         .then(showCountryCard)
         .catch(error => {
             clearMarkup();
             Notify.failure('Oops, there is no country with that name')
+            console.log(error)
         });
 }
 function clearMarkup() {
