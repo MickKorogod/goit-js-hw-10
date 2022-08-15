@@ -1,7 +1,7 @@
 import './css/styles.css';
 import { Notify } from 'notiflix';
 import debounce from 'lodash.debounce';
-import API from './fetchCountries'
+import {fetchCountries} from './fetchCountries'
 import { 
     renderMarkupCountryList,
     renderMarkupCountryInfo,
@@ -23,7 +23,7 @@ function onCountrySearch(e) {
         return;
     }
 
-    API.fetchCountries(name)
+    fetchCountries(name)
         .then(showCountryCard)
         .catch(error => {
             clearMarkup();
