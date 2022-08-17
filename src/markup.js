@@ -3,7 +3,7 @@ export function renderMarkupCountryInfo({
     name,
     capital,
     population,
-    langueges,
+    languages,
     flags,  
 
 }) {
@@ -12,7 +12,7 @@ export function renderMarkupCountryInfo({
 <h2>${name.official ? name.official : ""}</h2>
 <p>Population:&nbsp${population ? population : ""}</p>
 <p>Capital:&nbsp${capital ? capital : ""}</p>
-<p>Langueges:&nbsp ${{ langueges }}</p>
+<p>Langueges:&nbsp ${Object.values(languages)}</p>
 
 </li>`}
 
